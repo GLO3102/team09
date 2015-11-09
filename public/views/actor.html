@@ -6,6 +6,9 @@
         <div class="col-md-12 col-sm-12 col-xs-12" ng-controller="ActorCtrl" ng-init="getActor(95221335)">
             <h1>{{actor.artistName}}</h1>
             <h4>{{actor.primaryGenreName}}</h4>
+            <div class="actor-apple-button">
+                <a class="appleButton" href="{{actor.artistLinkUrl}}"></a>
+            </div>
         </div>
     </div>
 
@@ -26,10 +29,28 @@
                         <h5>Release date : {{movie.releaseDate | date:'yyyy-MM-dd' }}</h5>
                         <p>{{movie.longDescription}}</p>
                         <div>
+                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#movieplayer{{movie.trackId}}">
+                                Bande annonce
+                            </button>
                             <a class="appleButton" href="{{movie.trackViewUrl}}"></a>
                         </div>
                     </div>
                 </div>
+            </div>
+            <div id="movieplayer{{movie.trackId}}" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">{{movie.trackName}}</h4>
+                        </div>
+                        <div class="modal-body">
+                            <video id="myVideo" width="300" height="200" preload="auto" src="{{movie.previewUrl}}" type="video/mp4" autoplay controls>
+
+                            </video>
+                        </div>
+                    </div>
+               </div>
             </div>
         </div>
     </div>
